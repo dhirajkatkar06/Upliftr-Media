@@ -14,23 +14,51 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-    setMobileMenuOpen(false);
-    
-    if (path.includes('#')) {
-      const [route, hash] = path.split('#');
-      const targetRoute = route || '/';
-      const isSamePage = location.pathname === targetRoute;
+  const handleLinkClick = (
+  e: React.MouseEvent<HTMLAnchorElement>,
+  path: string
+) => {
+  setMobileMenuOpen(false);
 
-      if (isSamePage) {
-        e.preventDefault();
+  if (path.includes('#')) {
+    const [route, hash] = path.split('#');
+    const targetRoute = route || '/';
+    const isSamePage = location.pathname === targetRoute;
+
+    if (isSamePage) {
+      e.preventDefault();
+
+      // ⏱️ Wait for mobile menu animation to finish
+      setTimeout(() => {
         const element = document.getElementById(hash);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
         }
-      }
+      }, 350); // must match animation duration
     }
-  };
+  }
+};
+
+  // const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+  //   setMobileMenuOpen(false);
+    
+  //   if (path.includes('#')) {
+  //     const [route, hash] = path.split('#');
+  //     const targetRoute = route || '/';
+  //     const isSamePage = location.pathname === targetRoute;
+
+  //     if (isSamePage) {
+  //       e.preventDefault();
+  //       const element = document.getElementById(hash);
+  //       if (element) {
+  //         element.scrollIntoView({ behavior: 'smooth' });
+  //       }
+  //     }
+  //   }
+  // };
 
   const links = [
     { name: 'Home', path: '/' },
