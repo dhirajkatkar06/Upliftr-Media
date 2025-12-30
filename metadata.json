@@ -1,0 +1,7 @@
+{
+  "name": "Upliftr Digital Marketing Agency",
+  "description": "A high-end, minimalistic digital marketing agency website featuring advanced scroll animations, video-centric hero and portfolio sections, and a Gemini-powered chatbot assistant.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
