@@ -5,6 +5,7 @@ export interface Service {
   shortDescription: string;
   fullDescription: string;
   icon: string;
+  image: string;
   features: string[];
 }
 

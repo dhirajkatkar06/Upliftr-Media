@@ -128,7 +128,7 @@ const ServiceSection: React.FC<{ service: typeof SERVICES[0], idx: number }> = (
           className="relative rounded-[3rem] overflow-hidden border border-white/5 bg-slate-900 shadow-2xl z-10"
         >
           <motion.img
-            src={`https://images.unsplash.com/photo-${1550000000000 + (idx * 1000000)}?auto=format&fit=crop&q=80&w=1200`}
+            src={service.image}
             alt={service.title}
             whileHover={{ scale: 1.08 }}
             transition={{ duration: 1.5, ease: "easeOut" }}

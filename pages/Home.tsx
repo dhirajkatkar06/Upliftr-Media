@@ -5,6 +5,8 @@ import Hero from '../components/Hero';
 import Portfolio from '../components/Portfolio';
 import { SERVICES } from '../constants';
 import { Link } from 'react-router-dom';
+import ContactForm from "../components/ContactForm";
+
 
 const Home: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -171,8 +173,8 @@ const Home: React.FC = () => {
             <div className="lg:w-1/2 p-12 md:p-20">
               <h2 className="text-4xl md:text-6xl font-heading font-black mb-8">GET IN <span className="text-cyan-500">TOUCH</span></h2>
               <p className="text-slate-400 mb-12">Ready to take your brand to the next level? Drop us a message and we'll get back to you within 24 hours.</p>
-              
-              <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); alert('Message Sent! We will reach out soon.'); }}>
+              <ContactForm />
+              {/* <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); alert('Message Sent! We will reach out soon.'); }}>
                 <div className="space-y-4">
                    <input required type="text" placeholder="Full Name" className="w-full bg-slate-900 border border-slate-800 rounded-2xl px-6 py-4 focus:border-cyan-500 outline-none transition-all text-white" />
                    <input required type="email" placeholder="Email Address" className="w-full bg-slate-900 border border-slate-800 rounded-2xl px-6 py-4 focus:border-cyan-500 outline-none transition-all text-white" />
@@ -184,12 +186,12 @@ const Home: React.FC = () => {
                 >
                   SEND ENQUIRY
                 </button>
-              </form>
+              </form> */}
             </div>
             
             <div className="lg:w-1/2 h-[400px] lg:h-auto grayscale contrast-125 border-l border-slate-800 relative">
                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3059445135!2d-74.25986763365313!3d40.69714941774136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d603585.377587306!2d72.77575274257797!3d18.93936541313739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c630d1bb39fb%3A0x503f9b93e9dce6!2sMumbai%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sin!4v1700000000000"
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 
@@ -198,8 +200,8 @@ const Home: React.FC = () => {
                 ></iframe>
                 <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
                 <div className="absolute bottom-10 left-10 glass p-6 rounded-2xl border border-white/10">
-                  <p className="text-white font-bold mb-1">VISIT OUR OFFICE</p>
-                  <p className="text-slate-400 text-sm">976, Digital Heights, Innovation Dr.</p>
+                  <p className="text-white font-bold mb-1">Mumbai, Maharashtra</p>
+                  <p className="text-slate-400 text-sm">India</p>
                 </div>
             </div>
           </motion.div>

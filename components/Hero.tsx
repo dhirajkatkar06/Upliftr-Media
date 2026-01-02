@@ -8,16 +8,36 @@ const Hero: React.FC = () => {
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // useEffect(() => {
+  //   if (videoRef.current) {
+  //     // Ensure the video is muted for autoplay compliance
+  //     videoRef.current.defaultMuted = true;
+  //     videoRef.current.muted = true;
+  //     videoRef.current.play().catch(error => {
+  //       console.warn("Autoplay was prevented:", error);
+  //     });
+  //   }
+  // }, []);
   useEffect(() => {
-    if (videoRef.current) {
-      // Ensure the video is muted for autoplay compliance
-      videoRef.current.defaultMuted = true;
-      videoRef.current.muted = true;
-      videoRef.current.play().catch(error => {
-        console.warn("Autoplay was prevented:", error);
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.playsInline = true;
+
+    const playVideo = () => {
+      video.play().catch(err => {
+        console.warn("Video autoplay blocked:", err);
       });
-    }
+    };
+
+    video.addEventListener("loadedmetadata", playVideo);
+
+    return () => {
+      video.removeEventListener("loadedmetadata", playVideo);
+    };
   }, []);
+
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-slate-950">
@@ -25,16 +45,16 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}
-          autoPlay
+          // autoPlay
           loop
           muted
           playsInline
           preload="auto"
           className="w-full h-full object-cover brightness-[0.35] contrast-[1.15] saturate-[1.1]"
-          poster="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=2000"
+          // poster="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=2000"
         >
           {/* Stable Creative Agency Video Link */}
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-creative-team-working-on-a-brand-identity-40156-large.mp4" type="video/mp4" />
+          <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
         {/* Screenshot-matched gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-transparent to-slate-950" />
@@ -70,12 +90,12 @@ const Hero: React.FC = () => {
 
           <h1 className="text-6xl md:text-[130px] font-heading font-black leading-[0.85] mb-10 tracking-tighter">
             <span className="text-white">UPLIFTR</span> <br />
-            <span className="text-cyan-500 inline-block mt-2">DIGITAL IDENTITY</span>
+            <span className="text-cyan-500 inline-block mt-2">Media</span>
           </h1>
           
           <p className="max-w-2xl mx-auto text-slate-200 text-lg md:text-xl font-light mb-12 leading-relaxed opacity-80">
-            A full-stack creative marketing agency dedicated to making <br className="hidden md:block" />
-            your brand impossible to ignore through cinematic storytelling.
+            Where bold creativity meets <br className="hidden md:block" />
+            measurable brand growth.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

@@ -12,42 +12,47 @@ export const SERVICES: Service[] = [
   {
     id: 'social-media',
     title: 'Social Media Management',
-    shortDescription: 'Data-driven growth for your social channels.',
-    fullDescription: 'We handle everything from strategy to posting, engagement, and reporting. Our goal is to build a community around your brand that converts into loyal customers.',
+    shortDescription: 'Social media isn’t just posting — it’s building presence.',
+    fullDescription: 'Our social media management services help brands stay active, relevant, and visible. We create structured content calendars, manage daily posting, and engage with your audience to drive organic growth and long-term brand value.',
     icon: 'fa-share-nodes',
-    features: ['Strategy Development', 'Community Management', 'Content Scheduling', 'Analytics & Reporting']
+    image: '/images/services/social-media.png',
+    features: ['Content Planning', 'Brand Consistency', 'Audience Engagement', 'Analytics Tracking']
   },
   {
-    id: 'content-creation',
-    title: 'Creative Content',
-    shortDescription: 'Static posts and cinematic reels that captivate.',
-    fullDescription: 'Our creative team produces visually stunning static posts and high-energy reels tailored for Instagram, TikTok, and LinkedIn. We tell stories that stop the scroll.',
+    id: 'influencer-marketing',
+    title: 'Influencer Marketing',
+    shortDescription: 'Influence works best when it feels real.',
+    fullDescription: 'We create and manage influencer campaigns that connect your brand with the right creators. From influencer selection to campaign execution and tracking, we focus on building authentic partnerships that increase reach, trust, and engagement.',
     icon: 'fa-clapperboard',
-    features: ['Static Graphic Design', 'Video Reels & Shorts', 'Motion Graphics', 'Copywriting']
+    image: '/images/services/influencer.png',
+    features: ['Brand Collaborations', 'Authentic Reach', 'Brand Awareness', 'Engagement Growth']
   },
   {
     id: 'production',
     title: 'Production Shoot',
-    shortDescription: 'Professional studio and on-site production.',
-    fullDescription: 'From high-end product photography to commercial video shoots, our production team ensures your brand looks premium and professional.',
+    shortDescription: 'Every frame tells your brand story.',
+    fullDescription: 'We handle end-to-end photo and video production to create visually compelling content for your brand. From concept planning to final editing, our production team ensures every frame reflects your brand’s identity and engages your audience effectively.',
     icon: 'fa-camera-retro',
-    features: ['Commercial Videography', 'Product Photography', 'Post-Production', 'Set Design']
+    image: '/images/services/production-shoot.png',
+    features: ['Commercial Videography', 'Product Photography', 'Post-Production', 'Concept Planning']
   },
   {
     id: 'performance-marketing',
     title: 'Performance Marketing',
-    shortDescription: 'ROI-focused campaigns that drive results.',
-    fullDescription: 'We optimize your ad spend across Google, Meta, and LinkedIn to ensure you get the highest possible return on investment.',
+    shortDescription: 'Performance marketing isn’t about spending more — it’s about converting better.',
+    fullDescription: 'We create and manage data-driven advertising campaigns focused on real business outcomes. From strategy and audience targeting to continuous optimization, our performance marketing ensures maximum reach, quality leads, and measurable ROI across platforms.',
     icon: 'fa-chart-line',
-    features: ['PPC Campaigns', 'Paid Social', 'Conversion Rate Optimization', 'Funnel Strategy']
+    image: '/images/services/performance.png',
+    features: ['ROI-Driven', 'High-Conversion', 'Lead Generation', 'Campaign Optimization']
   },
   {
-    id: 'creative-ideas',
-    title: 'Creative Ideation',
-    shortDescription: 'Brainstorming the next big trend for your brand.',
-    fullDescription: 'Stuck in a rut? Our creative consultants provide fresh ideas and innovative concepts to keep your brand ahead of the curve.',
+    id: 'web-development',
+    title: 'Web Development',
+    shortDescription: 'Design that attracts. Development that converts.',
+    fullDescription: 'We build modern, responsive websites that represent your brand and support your marketing goals. From design to development, our websites are optimized for performance, usability, and conversions across all devices.',
     icon: 'fa-lightbulb',
-    features: ['Trend Research', 'Campaign Concepting', 'Brand Voice Development', 'Viral Hook Strategy']
+    image: '/images/services/web.png',
+    features: ['Responsive Design', 'Conversion Focused', 'Performance Optimized', 'Mobile Optimized']
   }
 ];
 

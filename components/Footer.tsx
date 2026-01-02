@@ -26,10 +26,10 @@ const Footer: React.FC = () => {
               Transforming businesses through creative content and performance-driven marketing.
             </p>
             <div className="flex space-x-4">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-400 transition-all"><i className="fa-brands fa-instagram"></i></a>
+              <a href="https://www.instagram.com/upliftr.in?igsh=MTlvZ3d0YTAzNnpnaw==" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-400 transition-all"><i className="fa-brands fa-instagram"></i></a>
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-400 transition-all"><i className="fa-brands fa-linkedin-in"></i></a>
-              <a href="https://tiktok.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-400 transition-all"><i className="fa-brands fa-tiktok"></i></a>
-              <a href="https://x.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-400 transition-all"><i className="fa-brands fa-x-twitter"></i></a>
+              <a href="https://tiktok.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-400 transition-all"><i className="fa-brands fa-facebook"></i></a>
+              {/* <a href="https://x.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-400 transition-all"><i className="fa-brands fa-x-twitter"></i></a> */}
             </div>
           </div>
 
@@ -55,12 +55,52 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
+          {/* <div>
+            <h4 className="text-white font-heading font-bold mb-6">CONTACT</h4>
+            <ul className="space-y-4 text-slate-400 text-sm">
+              <li className="flex items-center"><i className="fa-solid fa-envelope mr-3 text-cyan-500"></i> dhirajkatkardrk@gmail.com</li>
+              <li className="flex items-center"><i className="fa-solid fa-phone mr-3 text-cyan-500"></i> +91 97697 08255</li>
+              <li className="flex items-start"><i className="fa-solid fa-location-dot mr-3 text-cyan-500 mt-1"></i> Mumbai, Maharashtra<br />India</li>
+            </ul>
+          </div> */}
           <div>
             <h4 className="text-white font-heading font-bold mb-6">CONTACT</h4>
             <ul className="space-y-4 text-slate-400 text-sm">
-              <li className="flex items-center"><i className="fa-solid fa-envelope mr-3 text-cyan-500"></i> hello@upliftr.agency</li>
-              <li className="flex items-center"><i className="fa-solid fa-phone mr-3 text-cyan-500"></i> +91 97697 08255</li>
-              <li className="flex items-start"><i className="fa-solid fa-location-dot mr-3 text-cyan-500 mt-1"></i> 976, Digital Heights,<br />Innovation Dr, NYC</li>
+
+              <li>
+                <a
+                  href="mailto:dhirajkatkardrk@gmail.com"
+                  className="flex items-center hover:text-cyan-400 transition"
+                >
+                  <i className="fa-solid fa-envelope mr-3 text-cyan-500"></i>
+                  dhirajkatkardrk@gmail.com
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="tel:+919769708255"
+                  className="flex items-center hover:text-cyan-400 transition"
+                >
+                  <i className="fa-solid fa-phone mr-3 text-cyan-500"></i>
+                  +91 97697 08255
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Mumbai,+Maharashtra,+India"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start hover:text-cyan-400 transition"
+                >
+                  <i className="fa-solid fa-location-dot mr-3 text-cyan-500 mt-1"></i>
+                  <span>
+                    Mumbai, Maharashtra<br />India
+                  </span>
+                </a>
+              </li>
+
             </ul>
           </div>
         </div>
@@ -68,8 +108,8 @@ const Footer: React.FC = () => {
         <div className="pt-10 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs">
           <p>© 2024 UPLIFTR DIGITAL AGENCY. ALL RIGHTS RESERVED.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link to="/" className="hover:text-slate-300">Privacy Policy</Link>
-            <Link to="/" className="hover:text-slate-300">Terms of Service</Link>
+            {/* <Link to="/" className="hover:text-slate-300">Privacy Policy</Link> */}
+            {/* <Link to="/" className="hover:text-slate-300">Terms of Service</Link> */}
           </div>
         </div>
       </div>
