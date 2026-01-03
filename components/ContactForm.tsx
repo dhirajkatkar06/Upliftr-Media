@@ -4,14 +4,16 @@ import emailjs from "@emailjs/browser";
 import { useState, useRef } from "react";
 
 interface FormValues {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   service: string;
   message: string;
 }
 
 const schema = Yup.object({
-  name: Yup.string().min(2, "Name too short").required("Name is required"),
+  firstName: Yup.string().min(2, "First name too short").required("First name is required"),
+  lastName: Yup.string().min(2, "Last name too short").required("Last name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   service: Yup.string().required("Please select a service"),
   message: Yup.string().min(10, "Message too short").required("Message is required"),
@@ -26,24 +28,37 @@ const ContactForm = () => {
     submitLock.current = true;
 
     try {
-        await emailjs.send(
-            "service_3j56lfq",
-            "template_ka7zeiy",
-            {
-                name: values.name,
-                email: values.email,
-                service: values.service,
-                message: values.message,
-            },
-            "GMKElwlFnzP2YGuej"
-        );
+      const templateParams = {
+        name: `${values.firstName} ${values.lastName}`,
+        email: values.email,
+        service: values.service,
+        message: values.message,
+      };
+
+      // 1️⃣ ADMIN EMAIL (YOU receive this)
+      await emailjs.send(
+        "service_3j56lfq",
+        "template_ka7zeiy",
+        templateParams,
+        "GMKElwlFnzP2YGuej"
+      );
+
+      // 2️⃣ USER CONFIRMATION EMAIL (CLIENT receives this)
+      await emailjs.send(
+        "service_3j56lfq",
+        "template_me80jv5",
+        templateParams,
+        "GMKElwlFnzP2YGuej"
+      );
 
       setSent(true);
       resetForm();
 
       setTimeout(() => setSent(false), 5000);
+
     } catch (err) {
       alert("Something went wrong. Please try again.");
+    
     } finally {
       submitLock.current = false;
     }
@@ -51,12 +66,13 @@ const ContactForm = () => {
 
   return (
     <Formik
-          initialValues={{
-              name: "",
-              email: "",
-              service: "Performance Marketing",
-              message: "",
-          }}
+      initialValues={{
+        firstName: "",
+        lastName: "",
+        email: "",
+        service: "Performance Marketing",
+        message: "",
+      }}
       validationSchema={schema}
       onSubmit={onSubmit}
     >
@@ -64,13 +80,24 @@ const ContactForm = () => {
         <Form className="space-y-6">
           {!sent ? (
             <>
-              <div>
-                <Field
-                  name="name"
-                  placeholder="Full Name"
-                  className="w-full bg-slate-900 border border-slate-800 rounded-2xl px-6 py-4 text-white focus:border-cyan-500 outline-none"
-                />
-                <ErrorMessage name="name" component="div" className="text-red-400 text-xs mt-2" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Field
+                    name="firstName"
+                    placeholder="First Name"
+                    className="w-full bg-slate-900 border border-slate-800 rounded-2xl px-6 py-4 text-white"
+                  />
+                  <ErrorMessage name="firstName" component="div" className="text-red-400 text-xs mt-2" />
+                </div>
+
+                <div>
+                  <Field
+                    name="lastName"
+                    placeholder="Last Name"
+                    className="w-full bg-slate-900 border border-slate-800 rounded-2xl px-6 py-4 text-white"
+                  />
+                  <ErrorMessage name="lastName" component="div" className="text-red-400 text-xs mt-2" />
+                </div>
               </div>
 
               <div>
