@@ -1,8 +1,13 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useNavigate } from "react-router-dom";
+
+
+
 
 const Hero: React.FC = () => {
+  const navigate = useNavigate();
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -51,7 +56,7 @@ const Hero: React.FC = () => {
           playsInline
           preload="auto"
           className="w-full h-full object-cover brightness-[0.35] contrast-[1.15] saturate-[1.1]"
-          // poster="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=2000"
+        // poster="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=2000"
         >
           {/* Stable Creative Agency Video Link */}
           <source src="/videos/hero.mp4" type="video/mp4" />
@@ -61,11 +66,11 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Decorative Glows */}
-      <motion.div 
+      <motion.div
         style={{ y: y1 }}
         className="absolute top-1/4 -left-20 w-80 h-80 bg-cyan-500/15 rounded-full blur-[120px] pointer-events-none"
       />
-      <motion.div 
+      <motion.div
         style={{ y: -y1 }}
         className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600/10 rounded-full blur-[150px] pointer-events-none"
       />
@@ -92,21 +97,21 @@ const Hero: React.FC = () => {
             <span className="text-white">UPLIFTR</span> <br />
             <span className="text-cyan-500 inline-block mt-2">Media</span>
           </h1>
-          
+
           <p className="max-w-2xl mx-auto text-slate-200 text-lg md:text-xl font-light mb-12 leading-relaxed opacity-80">
             Where bold creativity meets <br className="hidden md:block" />
             measurable brand growth.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button 
-              onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
+            <button
+              onClick={() => navigate("/portfolio")}
               className="group relative w-full sm:w-auto bg-cyan-600 text-white px-12 py-5 rounded-full font-bold text-lg transition-all hover:bg-cyan-500 shadow-2xl shadow-cyan-500/30"
             >
               <span className="relative z-10">View Our Work</span>
             </button>
-            <button 
-              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+            <button
+              onClick={() => navigate("/services")}
               className="w-full sm:w-auto border border-white/20 hover:border-cyan-400 text-white px-12 py-5 rounded-full font-bold text-lg transition-all bg-white/5 backdrop-blur-md hover:bg-white/10"
             >
               Our Services
@@ -116,7 +121,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div 
+      <motion.div
         animate={{ y: [0, 15, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/40 cursor-pointer hover:text-cyan-400 transition-colors"

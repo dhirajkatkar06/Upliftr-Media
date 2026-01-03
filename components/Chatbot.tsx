@@ -50,6 +50,15 @@ const Chatbot: React.FC = () => {
             const currentLeads = JSON.parse(localStorage.getItem('upliftr_enquiries') || '[]');
             currentLeads.push({ ...leadData, timestamp: new Date().toISOString() });
             localStorage.setItem('upliftr_enquiries', JSON.stringify(currentLeads));
+
+            // 🔹 NEW: Save to Google Sheet (ONLY ADDITION)
+            fetch("/api/save-enquiry", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(leadData),
+            }).catch(err => console.error("Google Sheet Error", err));
             
             // Show Success Notification
             setShowSuccess(true);
