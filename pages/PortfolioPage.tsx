@@ -31,16 +31,25 @@ const PortfolioGridItem: React.FC<{ item: typeof PORTFOLIO[0], idx: number }> = 
       viewport={{ once: false, amount: 0.2 }}
       className="group relative h-[500px] md:h-[600px] rounded-[3rem] overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl"
     >
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-[1.2s] ease-out"
-      >
-        <source src={item.video} type="video/mp4" />
-      </video>
+      {item.video ? (
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={item.image}
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src={item.video} type="video/mp4" />
+        </video>
+      ) : (
+        <img
+          src={item.image}
+          alt={item.client}
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+      )}
       
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-10 opacity-80 group-hover:opacity-60 transition-opacity duration-700"></div>
       
