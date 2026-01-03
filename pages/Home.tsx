@@ -189,7 +189,10 @@ const Home: React.FC = () => {
               </form> */}
             </div>
             
-            <div className="lg:w-1/2 h-[400px] lg:h-auto grayscale contrast-125 border-l border-slate-800 relative">
+            {/* <div className="lg:w-1/2 h-[400px] lg:h-auto grayscale contrast-125 border-l border-slate-800 relative"> */}
+            <div className="lg:w-1/2 h-[400px] lg:h-auto border-l border-slate-800 relative">
+                {/* <div className="lg:w-1/2 h-[400px] lg:h-auto grayscale hover:grayscale-0 transition-all duration-700 border-l border-slate-800 relative"> */}
+
                <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d603585.377587306!2d72.77575274257797!3d18.93936541313739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c630d1bb39fb%3A0x503f9b93e9dce6!2sMumbai%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sin!4v1700000000000"
                   width="100%" 

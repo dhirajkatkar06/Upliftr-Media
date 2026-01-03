@@ -91,7 +91,7 @@ const Chatbot: React.FC = () => {
       }
     } catch (error) {
       console.error(error);
-      setMessages(prev => [...prev, { role: 'bot', text: "I hit a snag, but don't worry—you can also reach us directly at hello@upliftr.agency." }]);
+      setMessages(prev => [...prev, { role: 'bot', text: "I hit a snag, but don't worry—you can also reach us directly at dhirajkatkardrk@gmail.com" }]);
     } finally {
       setIsLoading(false);
     }
