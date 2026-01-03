@@ -16,6 +16,7 @@ const Chatbot: React.FC = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [enquiryBooked, setEnquiryBooked] = useState(false);
   
   const historyRef = useRef<any[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -30,6 +31,19 @@ const Chatbot: React.FC = () => {
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
+
+    // 🔒 Prevent duplicate booking after success
+    if (enquiryBooked) {
+      setMessages(prev => [
+        ...prev,
+        {
+          role: 'bot',
+          text: "You're most welcome 😊 Our team has your details and will reach out shortly. How can i assist you more?"
+        }
+      ]);
+      setInput('');
+      return;
+    }
 
     const userMsg = input;
     setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
@@ -63,6 +77,7 @@ const Chatbot: React.FC = () => {
             // Show Success Notification
             setShowSuccess(true);
             setTimeout(() => setShowSuccess(false), 4000);
+            setEnquiryBooked(true);
 
             const confirmation = `Perfect! I've booked your enquiry for ${leadData.fullName}. Our strategy team will review your ${leadData.projectType} request and reach out to ${leadData.email} within 24 hours.`;
             setMessages(prev => [...prev, { role: 'bot', text: confirmation }]);
@@ -94,7 +109,7 @@ const Chatbot: React.FC = () => {
             className="pointer-events-auto mb-4 bg-emerald-500 text-white px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-3 font-bold border border-emerald-400"
           >
             <i className="fa-solid fa-cloud-check text-xl"></i>
-            Enquiry Stored in Drive!
+            Enquiry Booked!
           </motion.div>
         )}
       </AnimatePresence>
