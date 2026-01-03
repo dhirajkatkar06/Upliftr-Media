@@ -32,19 +32,6 @@ const Chatbot: React.FC = () => {
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
 
-    // 🔒 Prevent duplicate booking after success
-    if (enquiryBooked) {
-      setMessages(prev => [
-        ...prev,
-        {
-          role: 'bot',
-          text: "You're most welcome 😊 Our team has your details and will reach out shortly. How can i assist you more?"
-        }
-      ]);
-      setInput('');
-      return;
-    }
-
     const userMsg = input;
     setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
     setInput('');
@@ -59,6 +46,9 @@ const Chatbot: React.FC = () => {
       if (response.functionCalls && response.functionCalls.length > 0) {
         for (const fc of response.functionCalls) {
           if (fc.name === 'bookEnquiry') {
+            if (enquiryBooked) {
+              continue; // Ignore this function call, allow normal chat
+            }
             // "Save" to Drive - Simulated by logging and localStorage
             const leadData = fc.args;
             const currentLeads = JSON.parse(localStorage.getItem('upliftr_enquiries') || '[]');
@@ -78,7 +68,6 @@ const Chatbot: React.FC = () => {
             setShowSuccess(true);
             setTimeout(() => setShowSuccess(false), 4000);
             setEnquiryBooked(true);
-
             const confirmation = `Perfect! I've booked your enquiry for ${leadData.fullName}. Our strategy team will review your ${leadData.projectType} request and reach out to ${leadData.email} within 24 hours.`;
             setMessages(prev => [...prev, { role: 'bot', text: confirmation }]);
             historyRef.current.push({ role: 'model', parts: [{ text: confirmation }] });
@@ -91,7 +80,7 @@ const Chatbot: React.FC = () => {
       }
     } catch (error) {
       console.error(error);
-      setMessages(prev => [...prev, { role: 'bot', text: "I hit a snag, but don't worry—you can also reach us directly at dhirajkatkardrk@gmail.com" }]);
+      setMessages(prev => [...prev, { role: 'bot', text: "I hit a snag, but don't worry—you can also reach us directly at hello@upliftr.agency." }]);
     } finally {
       setIsLoading(false);
     }
