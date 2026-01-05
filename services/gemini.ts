@@ -43,7 +43,7 @@ export const getGeminiResponse = async (userMessage: string, history: any[] = []
         - Content Creation (Cinematic Reels & Static Posts)
         - Production Shoots (Commercial & Product)
         - Performance Marketing (Paid Ads & ROI)
-        - Creative Ideation (Trend Analysis)
+        - Influencer Marketing (Social Reach & Engagement)
 
         BOOKING PROCESS:
         To book an enquiry, you MUST collect:

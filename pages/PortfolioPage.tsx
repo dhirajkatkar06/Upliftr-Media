@@ -29,27 +29,30 @@ const PortfolioGridItem: React.FC<{ item: typeof PORTFOLIO[0], idx: number }> = 
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.6, delay: (idx % 2) * 0.1 }}
       viewport={{ once: false, amount: 0.2 }}
-      className="group relative h-[500px] md:h-[600px] rounded-[3rem] overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl"
-    >
-      {item.video ? (
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster={item.image}
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src={item.video} type="video/mp4" />
-        </video>
-      ) : (
-        <img
-          src={item.image}
-          alt={item.client}
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        />
-      )}
+      className="group relative rounded-[3rem] overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl"
+    >{/* MEDIA WRAPPER */}
+      <div className="relative w-full">
+        {item.video ? (
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster={item.image}
+            className="w-full h-auto block"
+          >
+            <source src={item.video} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={item.image}
+            alt={item.client}
+            className="w-full h-auto block"
+          />
+        )}
+      </div>
+
       
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-10 opacity-80 group-hover:opacity-60 transition-opacity duration-700"></div>
       

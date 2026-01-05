@@ -36,17 +36,20 @@ const CaseStudyDetail: React.FC = () => {
             </div>
           </div>
 
-          <div className="rounded-[3rem] overflow-hidden bg-slate-900 border border-slate-800 mb-16 aspect-video shadow-2xl">
+          <div className="rounded-[3rem] overflow-hidden bg-slate-900 border border-slate-800 mb-16 shadow-2xl">
             <video
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-cover"
+              poster={project.image}
+              className="w-full h-auto block"
             >
               <source src={project.video} type="video/mp4" />
             </video>
+            
           </div>
+
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
             <div className="lg:col-span-2 space-y-12">

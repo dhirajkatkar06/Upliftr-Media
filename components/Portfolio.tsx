@@ -31,9 +31,12 @@ const PortfolioItem: React.FC<{ item: typeof PORTFOLIO[0], index: number }> = ({
       transition={{ duration: 0.8, delay: index * 0.1 }}
       viewport={{ amount: 0.2 }}
       onMouseEnter={handleMouseEnter}
-      className="group relative h-[600px] rounded-[3rem] overflow-hidden bg-slate-900 cursor-pointer shadow-2xl border border-slate-800"
+      className="group relative rounded-[3rem] overflow-hidden bg-slate-900 cursor-pointer shadow-2xl border border-slate-800"
+
+
+      //className="group relative h-[600px] rounded-[3rem] overflow-hidden bg-slate-900 cursor-pointer shadow-2xl border border-slate-800"
     >
-      {item.video && item.video.trim() !== "" ? (
+      {/* {item.video && item.video.trim() !== "" ? (
         <video
           ref={videoRef}
           loop
@@ -41,17 +44,54 @@ const PortfolioItem: React.FC<{ item: typeof PORTFOLIO[0], index: number }> = ({
           playsInline
           preload="metadata"
           poster={item.image}
-          className="absolute inset-0 w-full h-full object-cover z-0 grayscale-[0.5] group-hover:grayscale-0 scale-110 group-hover:scale-100 transition-all duration-[1.5s] ease-out"
+          className="
+  absolute inset-0 w-full h-full
+  object-contain
+  bg-black
+  transition-opacity duration-700
+"
+          //className="absolute inset-0 w-full h-full object-cover z-0 grayscale-[0.5] group-hover:grayscale-0 scale-110 group-hover:scale-100 transition-all duration-[1.5s] ease-out"
         >
           <source src={item.video} type="video/mp4" />
         </video>
       ) : (
-        <img
-          src={item.image}
-          alt={item.client}
-          className="absolute inset-0 w-full h-full object-cover z-0 grayscale-[0.5] group-hover:grayscale-0 scale-110 group-hover:scale-100 transition-all duration-[1.5s] ease-out"
-        />
-      )}
+          <img
+            src={item.image}
+            alt={item.client}
+            className="
+    absolute inset-0 w-full h-full
+    object-cover object-center
+  "
+          />
+        // <img
+        //   src={item.image}
+        //   alt={item.client}
+        //   className="absolute inset-0 w-full h-full object-cover z-0 grayscale-[0.5] group-hover:grayscale-0 scale-110 group-hover:scale-100 transition-all duration-[1.5s] ease-out"
+        // />
+      )} */}
+
+      {/* MEDIA WRAPPER */}
+      <div className="relative w-full">
+        {item.video && item.video.trim() !== "" ? (
+          <video
+            ref={videoRef}
+            muted
+            loop
+            playsInline
+            poster={item.image}
+            className="w-full h-auto block"
+          >
+            <source src={item.video} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={item.image}
+            alt={item.client}
+            className="w-full h-auto block"
+          />
+        )}
+      </div>
+
       
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-10 opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
       
